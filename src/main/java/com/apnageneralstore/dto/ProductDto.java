@@ -15,7 +15,7 @@ public class ProductDto {
     private Long id;
 
     private @NotNull String name;
-    private @NotNull String imageURL;
+    private @NotNull String imageUrl;
     private @NotNull double price;
     private @NotNull String description;
     private @NotNull Integer categoryId;
@@ -24,7 +24,7 @@ public class ProductDto {
     public ProductDto(Product product) {
         this.setId(product.getId());
         this.setName(product.getName());
-        this.setImageURL(product.getImageURL());
+        this.setImageUrl(product.getImageUrl());
         this.setDescription(product.getDescription());
         this.setPrice(product.getPrice());
         this.setCategoryId(product.getCategory().getId());

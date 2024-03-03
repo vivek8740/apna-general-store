@@ -19,7 +19,7 @@ public class Product {
     private Long id;
 
     private @NotNull String name;
-    private @NotNull String imageURL;
+    private @NotNull String imageUrl;
     private @NotNull double price;
     private @NotNull String description;
 
@@ -30,7 +30,7 @@ public class Product {
 
     public Product(ProductDto productDto, Category category) {
         this.name = productDto.getName();
-        this.imageURL = productDto.getImageURL();
+        this.imageUrl= productDto.getImageUrl();
         this.description = productDto.getDescription();
         this.price = productDto.getPrice();
         this.category = category;

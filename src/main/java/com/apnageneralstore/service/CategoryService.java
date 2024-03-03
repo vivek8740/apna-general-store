@@ -2,6 +2,8 @@ package com.apnageneralstore.service;
 
 import com.apnageneralstore.repository.ICategoryRepository;
 import com.apnageneralstore.repository.entity.Category;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
+    Logger log = LoggerFactory.getLogger(CategoryService.class);
+
     @Autowired
     ICategoryRepository categoryRepository;
 
@@ -19,6 +23,7 @@ public class CategoryService {
     }
 
     public void createCategory(Category category) {
+        log.info("Data received {}",category);
         categoryRepository.save(category);
     }
 
