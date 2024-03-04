@@ -5,6 +5,8 @@ import com.apnageneralstore.exception.ProductNotExistException;
 import com.apnageneralstore.repository.IProductRepository;
 import com.apnageneralstore.repository.entity.Category;
 import com.apnageneralstore.repository.entity.Product;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+
+    Logger log = LoggerFactory.getLogger(ProductService.class);
 
     @Autowired
     IProductRepository productRepository;

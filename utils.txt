@@ -1,0 +1,34 @@
+CategoryController Endpoints:
+//Create Category
+POST : http://localhost:8000/category/create
+//To create category give below data as input.
+    {
+    "categoryName":"Pharma",
+    "description":"This category deals with medical products.",
+    "imageUrl":"./images/makeup-brushes.png"
+    }
+//Fetch all category
+GET : http://localhost:8000/category
+
+
+ProductController Endpoints:
+GET : http://localhost:8000/product/
+POST : http://localhost:8000/product/add
+//To create product give below data as input.
+    {
+        "name":"Hand Wash",
+        "price":75,
+        "description":"This is a Himalayan hand wash.",
+        "imageUrl":"./images/makeup-brushes.png",
+        "categoryId":1
+    }
+
+PUT : http://localhost:8000/product/update/1
+//To update product give below data as input.
+    {
+        "name":"Hand Wash",
+        "price":85,
+        "description":"This is a Himalyan hand wash.",
+        "imageUrl":"./images/makeup-brushes.png",
+        "categoryId":1
+    }

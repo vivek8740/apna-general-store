@@ -5,6 +5,7 @@ import com.apnageneralstore.dto.ProductDto;
 import com.apnageneralstore.repository.entity.Category;
 import com.apnageneralstore.service.CategoryService;
 import com.apnageneralstore.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,5 +48,15 @@ public class ProductController {
         Category category = optionalCategory.get();
         productService.addProduct(productDto, category);
         return new ResponseEntity<>(new ApiResponse(true, "Product has been added."), HttpStatus.CREATED);
+    }
+    @PutMapping("/update/{productId}")
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable("productId") Long productId, @Valid @RequestBody ProductDto productDto) {
+        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
+        if (optionalCategory.isEmpty()) {
+            return new ResponseEntity<>(new ApiResponse(false, "Category is invalid."), HttpStatus.CONFLICT);
+        }
+        Category category = optionalCategory.get();
+        productService.updateProduct(productId, productDto, category);
+        return new ResponseEntity<>(new ApiResponse(true, "Product has been updated."), HttpStatus.OK);
     }
 }
