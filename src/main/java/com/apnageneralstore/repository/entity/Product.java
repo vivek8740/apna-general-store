@@ -1,6 +1,6 @@
 package com.apnageneralstore.repository.entity;
 
-import com.apnageneralstore.dto.ProductDto;
+import com.apnageneralstore.dto.product.ProductDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

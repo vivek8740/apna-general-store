@@ -1,6 +1,6 @@
 package com.apnageneralstore.service;
 
-import com.apnageneralstore.dto.ProductDto;
+import com.apnageneralstore.dto.product.ProductDto;
 import com.apnageneralstore.exception.ProductNotExistException;
 import com.apnageneralstore.repository.IProductRepository;
 import com.apnageneralstore.repository.entity.Category;

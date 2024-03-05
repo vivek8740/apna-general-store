@@ -1,7 +1,7 @@
 /**
  * DTO (Data Transfer Object) class representing a product.
  */
-package com.apnageneralstore.dto;
+package com.apnageneralstore.dto.product;
 
 import com.apnageneralstore.repository.entity.Product;
 import jakarta.validation.constraints.NotNull;

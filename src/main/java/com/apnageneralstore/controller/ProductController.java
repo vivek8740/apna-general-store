@@ -1,7 +1,7 @@
 package com.apnageneralstore.controller;
 
 import com.apnageneralstore.common.ApiResponse;
-import com.apnageneralstore.dto.ProductDto;
+import com.apnageneralstore.dto.product.ProductDto;
 import com.apnageneralstore.repository.entity.Category;
 import com.apnageneralstore.service.CategoryService;
 import com.apnageneralstore.service.ProductService;
