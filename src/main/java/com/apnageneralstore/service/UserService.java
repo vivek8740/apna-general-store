@@ -1,11 +1,16 @@
 package com.apnageneralstore.service;
 
+import com.apnageneralstore.constant.AuthenticationMessage;
 import com.apnageneralstore.dto.ResponseDto;
 import com.apnageneralstore.dto.user.RegisterDto;
+import com.apnageneralstore.dto.user.SignInDto;
+import com.apnageneralstore.dto.user.SignInResponseDto;
+import com.apnageneralstore.exception.AuthenticationFailException;
 import com.apnageneralstore.exception.CustomException;
 import com.apnageneralstore.repository.IUserRepository;
 import com.apnageneralstore.repository.entity.AuthenticationToken;
 import com.apnageneralstore.repository.entity.User;
+import com.apnageneralstore.utils.Helper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +67,30 @@ public class UserService {
         md.update(password.getBytes());
         byte[] digest = md.digest();
         return DatatypeConverter.printHexBinary(digest).toUpperCase();
+    }
+    public SignInResponseDto signIn(SignInDto signInDto) {
+
+        //Check user availability in the DB and throw exception if not available.
+        User user = userRepository.findByEmail(signInDto.getEmail());
+        if (!Helper.notNull(user)) {
+            throw new AuthenticationFailException("User is not valid.");
+        }
+
+        try {
+            if (!user.getPassword().equals(hashPassword(signInDto.getPassword()))) {
+                throw new AuthenticationFailException(AuthenticationMessage.WRONG_PASSWORD);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            logger.error("Hashing password failed: ", e.getMessage());
+            throw new CustomException(e.getMessage());
+        }
+
+        AuthenticationToken token = authenticationService.getToken(user);
+        if (!Helper.notNull(token)) {
+            // token not present
+            throw new CustomException("Token not available");
+        }
+        return new SignInResponseDto("SUCCESS", token.getToken());
     }
 }

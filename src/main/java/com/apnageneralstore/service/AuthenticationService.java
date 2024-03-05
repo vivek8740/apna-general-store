@@ -40,4 +40,8 @@ public class AuthenticationService {
     private Object getUser(User user) {
         return tokenRepository.findTokenByUser(user);
     }
+
+    public AuthenticationToken getToken(User user) {
+        return tokenRepository.findTokenByUser(user);
+    }
 }

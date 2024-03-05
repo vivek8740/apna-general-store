@@ -2,6 +2,8 @@ package com.apnageneralstore.controller;
 
 import com.apnageneralstore.dto.ResponseDto;
 import com.apnageneralstore.dto.user.RegisterDto;
+import com.apnageneralstore.dto.user.SignInDto;
+import com.apnageneralstore.dto.user.SignInResponseDto;
 import com.apnageneralstore.exception.CustomException;
 import com.apnageneralstore.repository.IUserRepository;
 import com.apnageneralstore.repository.entity.User;
@@ -23,7 +25,7 @@ public class UserController {
     AuthenticationService authenticationService;
 
 
-    @GetMapping
+    @GetMapping("/all")
     public List<User> getAllUser(){
         return userService.listAllUsers();
     }
@@ -31,5 +33,9 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseDto register(@RequestBody RegisterDto registerDto)  throws CustomException {
         return userService.register(registerDto);
+    }
+    @PostMapping("/signin")
+    public SignInResponseDto signIn(@RequestBody SignInDto signInDto) {
+        return  userService.signIn(signInDto);
     }
 }

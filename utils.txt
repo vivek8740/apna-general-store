@@ -32,3 +32,13 @@ PUT : http://localhost:8000/product/update/1
         "imageUrl":"./images/makeup-brushes.png",
         "categoryId":1
     }
+
+#UserController endpoints.
+POST : http://localhost:8000/users/signup
+//Data to create user.
+{
+    "firstName":"Vivek",
+    "lastName":"Raj",
+    "email":"vivek@gmail.com",
+    "password":"Vivek123"
+}
