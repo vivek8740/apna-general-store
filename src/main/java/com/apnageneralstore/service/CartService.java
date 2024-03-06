@@ -1,9 +1,11 @@
 package com.apnageneralstore.service;
 
+import com.apnageneralstore.dto.cart.AddToCardDto;
 import com.apnageneralstore.dto.cart.CartDto;
 import com.apnageneralstore.dto.cart.CartItemDto;
 import com.apnageneralstore.repository.ICartRepository;
 import com.apnageneralstore.repository.entity.Cart;
+import com.apnageneralstore.repository.entity.Product;
 import com.apnageneralstore.repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,10 @@ public class CartService {
 
     @Autowired
     ICartRepository cartRepository;
+    public void addToCart(AddToCardDto addToCartDto, Product product, User user) {
+        Cart cart = new Cart(product, addToCartDto.getQuantity(), user);
+        cartRepository.save(cart);
+    }
     public CartDto listCartItems(User user) {
         List<Cart> cartList = cartRepository.findAllByUserOrderByCreatedDateDesc(user);
         List<CartItemDto> cartItems = new ArrayList<>();
