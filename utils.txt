@@ -42,3 +42,12 @@ POST : http://localhost:8000/users/signup
     "email":"vivek@gmail.com",
     "password":"Vivek123"
 }
+
+
+
+#Cart Controller Endpoints
+//To Fetch all cart items and its cost.
+// Here token=token received as response during login
+URL Breal : Protocol : http://localhost:port/cartendpoint?token=UUID->token
+GET : http://localhost:8000/cart?token=7a5c7f5d-5dbe-4e33-b95b-6a2d9f0364c1
+
