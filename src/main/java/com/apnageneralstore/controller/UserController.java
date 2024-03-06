@@ -5,9 +5,7 @@ import com.apnageneralstore.dto.user.RegisterDto;
 import com.apnageneralstore.dto.user.SignInDto;
 import com.apnageneralstore.dto.user.SignInResponseDto;
 import com.apnageneralstore.exception.CustomException;
-import com.apnageneralstore.repository.IUserRepository;
 import com.apnageneralstore.repository.entity.User;
-import com.apnageneralstore.service.AuthenticationService;
 import com.apnageneralstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +18,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    AuthenticationService authenticationService;
-
-
     @GetMapping("/all")
     public List<User> getAllUser(){
         return userService.listAllUsers();
