@@ -14,11 +14,9 @@ import com.apnageneralstore.utils.Helper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.xml.bind.DatatypeConverter;
-import javax.xml.crypto.dsig.DigestMethod;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -47,7 +45,7 @@ public class UserService {
             encryptedPassword = hashPassword(registerDto.getPassword());
         } catch (NoSuchAlgorithmException exception) {
             exception.printStackTrace();
-            logger.error("Hashing password failed: ", exception.getMessage());
+            logger.error("Hashing password failed: {}", exception.getMessage());
         }
         User user = User.builder()
                 .firstName(registerDto.getFirstName())
@@ -82,7 +80,7 @@ public class UserService {
             }
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            logger.error("Hashing password failed: ", e.getMessage());
+            logger.error("Hashing password failed: {}", e.getMessage());
             throw new CustomException(e.getMessage());
         }
 
