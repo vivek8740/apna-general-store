@@ -60,4 +60,8 @@ POST : http://localhost:8000/cart/add?token=<authentication token>
     "quantity":"1"
 }
 
+//CrossOrigin Access for the frontend app.
+//Add this line in ApnaGeneralStoreApplication class.
+@CrossOrigin(origins = "http://localhost:4200")
+
 
